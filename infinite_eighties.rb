@@ -1,4 +1,4 @@
-scale = [:c4, :d4, :e4, :g4, :a4]
+my_scale = [:c4, :d4, :e4, :g4, :a4]
 
 define :intro_drum_beat do
   use_random_seed 2
@@ -73,7 +73,7 @@ define :melody1 do |times, seed|
           sleep phrase_length
           end_loop = true
         end
-        play scale.sample(), release: 0.7
+        play my_scale.sample(), release: 0.7
       end
     end
   end
@@ -98,7 +98,7 @@ define :melody2 do |times, seed|
           end_loop = true
         end
 
-        play scale.sample(), release: 0.5
+        play my_scale.sample(), release: 0.5
       end
     end
   end
@@ -122,7 +122,7 @@ define :breakdown do |length, times, seed|
           end_loop = true
         end
 
-        play scale.sample(), release: 0.5
+        play my_scale.sample(), release: 0.5
         sample :drum_bass_hard
         sample :drum_snare_hard
         sample :drum_cymbal_hard
@@ -131,8 +131,11 @@ define :breakdown do |length, times, seed|
   end
 end
 
-
+forever = true
 drum_bass_kick
+
+while forever
+
 intro_drum_beat
 
 sleep 4
@@ -153,4 +156,6 @@ sleep 16
   melody1(4, rand_i(20000))
   melody2(4, rand_i(20000))
   sleep 16
+end
+
 end
